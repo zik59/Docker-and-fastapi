@@ -1,13 +1,14 @@
 from datetime import date
-from pydantic import BaseModel
+from sqlalchemy import Column, Date, Integer, String
+
+from database import Base
 
 
-class QuestionNum(BaseModel):
-    count: int
+class Question(Base):
+    __tablename__ = 'questions'
 
-
-class Question(BaseModel):
-    id: int
-    text: str
-    answer: str
-    date: date
+    ID = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer)
+    answer = Column(String)
+    question = Column(String)
+    date = Column(Date, default=date.today)
